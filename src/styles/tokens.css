@@ -1,0 +1,141 @@
+/**
+ * ============================================================
+ *  고객사별 교체 지점 #2 — 디자인 토큰
+ * ============================================================
+ *  색·폰트·간격·radius를 전부 여기서 정의합니다.
+ *  컴포넌트 CSS는 var(--...) 만 참조하므로,
+ *  이 파일의 값만 바꾸면 사이트 전체 톤이 바뀝니다.
+ *
+ *  FE/디자이너 작업 순서:
+ *   1) --brand-* 계열을 고객사 CI 색으로 교체
+ *   2) --font-sans 를 고객사 서체로 교체 (웹폰트는 global.css에서 @import)
+ *   3) 필요하면 --radius-*, --space-* 스케일 조정
+ * ============================================================
+ */
+
+:root {
+  /* ---------- Brand ---------- */
+  --brand-50: #eef2f6;
+  --brand-100: #d8e0e9;
+  --brand-500: #33485c;
+  --brand-600: #27394a;
+  --brand-700: #1c2836;
+  --brand-contrast: #ffffff;
+
+  /* ---------- Neutral ---------- */
+  /* 종이에 가까운 회색 — 순백보다 눈이 편하고 표지 색이 튀지 않습니다 */
+  --gray-0: #fffdf9;
+  --gray-50: #faf7f1;
+  --gray-100: #f3efe7;
+  --gray-200: #e6e0d5;
+  --gray-300: #d2cabc;
+  --gray-500: #756d62;
+  --gray-700: #413b34;
+  --gray-900: #221f1b;
+
+  /* ---------- Semantic (컴포넌트는 이 계층만 참조) ---------- */
+  --color-bg: var(--gray-0);
+  --color-bg-subtle: var(--gray-50);
+  --color-bg-muted: var(--gray-100);
+  --color-text: var(--gray-900);
+  --color-text-muted: var(--gray-500);
+  --color-border: var(--gray-200);
+  --color-accent: var(--brand-500);
+  --color-accent-hover: var(--brand-600);
+  --color-accent-text: var(--brand-contrast);
+  --color-accent-subtle: var(--brand-50);
+
+  /**
+   * 할인율 표시 색.
+   * 브랜드 색과 분리해 둡니다 — 브랜드 색이 빨강 계열이면 "할인"과
+   * "브랜드"가 구분되지 않고, 파랑 계열이면 할인율이 눈에 띄지 않습니다.
+   * -on-dark 는 overlay 카드처럼 어두운 배경 위에서 쓰는 밝은 변형입니다.
+   */
+  /* 도서정가제상 할인은 10%가 상한이라 숫자가 작습니다. 그래서 더 또렷한 색을 씁니다. */
+  --color-sale: #c0392b;
+  --color-sale-on-dark: #ff9a91;
+
+  /* ---------- Typography ---------- */
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', sans-serif;
+  /**
+   * 제목만 명조(세리프)로 둡니다. 책을 다루는 사이트에서 가장 값싸게
+   * 성격이 생기는 지점입니다. 본문까지 명조로 하면 화면에서 읽기 어렵습니다.
+   */
+  --font-heading: 'Noto Serif KR', 'Nanum Myeongjo', 'Apple SD Gothic Neo',
+    'Batang', serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.6;
+
+  /* ---------- Spacing ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ---------- Shape ---------- */
+  /* 책은 각진 물건이라 모서리를 거의 두지 않습니다 */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 16px rgba(16, 24, 40, 0.08);
+
+  /* ---------- Layout ---------- */
+  --container-max: 1180px;
+  --container-pad: var(--space-6);
+
+  /* ---------- Motion ---------- */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur: 180ms;
+}
+
+/**
+ * 다크 모드가 필요 없는 고객사는 이 블록을 통째로 삭제하면 됩니다.
+ * semantic 토큰만 재정의하므로 컴포넌트는 수정할 필요가 없습니다.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #15181c;
+    --color-bg-subtle: #1b1f24;
+    --color-bg-muted: #23282f;
+    --color-text: #e9e5dd;
+    --color-text-muted: #9ea69f;
+    --color-border: #333a42;
+    --color-accent: #9db9d4;
+    --color-accent-hover: #b6cce1;
+    --color-accent-text: #15181c;
+    --color-accent-subtle: #1f2a35;
+    --color-sale: #ff8078;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --text-3xl: 1.75rem;
+    --text-4xl: 2.125rem;
+    --container-pad: var(--space-4);
+  }
+}
