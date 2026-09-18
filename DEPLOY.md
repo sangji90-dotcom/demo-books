@@ -155,3 +155,22 @@ Cloudflare 대시보드 → **Analytics & Logs** → **Web Analytics** → 사�
 - [ ] `src/content/pages/about.md`, `privacy.md` 실제 내용으로
 
 나머지 체크 항목은 **README.md**의 납품 체크리스트를 따르세요.
+
+## 빌드가 `assets.directory ... does not exist` 로 실패할 때
+
+Cloudflare Workers 신규 프로젝트는 **Build command 칸이 비어 있는 상태로 생성됩니다.**
+그러면 `npm install` 직후 바로 `npx wrangler deploy` 로 넘어가고, `dist` 가 없어 이렇게 죽습니다.
+
+```
+✘ [ERROR] The directory specified by the "assets.directory" field
+  in your configuration file does not exist: /opt/buildhome/repo/dist
+```
+
+이 템플릿은 `wrangler.jsonc` 에 빌드 단계를 넣어 두어 그 경우에도 배포됩니다.
+
+```jsonc
+"build": { "command": "npm run build" }
+```
+
+대시보드에서 **Settings → Build → Build command** 에 `npm run build` 를 넣어도 됩니다.
+둘 다 설정하면 빌드가 두 번 돌 뿐 문제가 되지는 않습니다.
