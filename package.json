@@ -16,7 +16,8 @@
     "test:tokens": "node scripts/test-tokens.mjs",
     "import": "node scripts/import-products.mjs",
     "make-template": "node scripts/make-product-template.mjs",
-    "gen:books": "node scripts/gen-books.mjs"
+    "gen:books": "node scripts/gen-books.mjs",
+    "studio:sync": "node scripts/sync-studio.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
