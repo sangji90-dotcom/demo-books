@@ -130,7 +130,12 @@ const { contact } = siteConfig;
     flex-basis: 100%;
     margin-top: var(--space-3);
     line-height: 1.6;
-    opacity: 0.75;
+    /*
+     * ⚠ opacity 로 흐리게 만들지 마세요.
+     *   opacity: 0.75 를 걸었더니 12px 글자가 AA(4.5:1) 미달이었습니다.
+     *   덜 중요해 보이게 하려면 크기와 위치로 하고, 색은 대비를
+     *   지키는 값을 씁니다. npm run test:contrast 로 확인됩니다.
+     */
   }
 
   @media (max-width: 720px) {
